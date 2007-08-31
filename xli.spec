@@ -1,21 +1,17 @@
-# sometime i hope to remove the xv shareware and replace it by this
-# one.
 %define	name	xli
-%define	version	1.17.0
-%define	release	%mkrel 11
+%define	version	20061110
+%define fver	2006-11-10
+%define	release	%mkrel 1
 %define	url	http://pantransit.reptiles.org/prog/
 
 Summary:	XLI - X11 Image Loading Utility
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Url:		%{url}
-# I was need to redo the tarball.
-Source0:	%{url}/%{name}-%{version}.tar.bz2
-Patch1:		xli-1.17.0-mdkpath.patch.bz2
-Patch2:		xli-1.17.0-compile-fixes.patch.bz2
-Patch3:		xli-1.16-faces.patch.bz2
-Patch4:		xli-1.17.0-gcc-3.3.patch.bz2
+URL:		%{url}
+Source0:	%{url}/%{name}/%{name}-%{fver}.tar.gz
+Patch1:		xli-1.17.0-mdkpath.patch
+Patch2:		xli-1.17.0-compile-fixes.patch
 License:	MIT
 Group:		Graphics
 BuildRequires:	XFree86-devel
@@ -40,18 +36,15 @@ Image, McIDAS areafile, G3 FAX Image, PC Paintbrush Image, GEM Bit Image,
 MacPaint Image, X Pixmap (.xpm), XBitmap
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{fver}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p0 -b .faces
-%patch4 -p0 -b .gcc3.3
 
 %build
 xmkmf -a
 %make CFLAGS="%optflags"
 for i in xli xlito; do cp -f $i.man $i.1; done
 cp -f xliguide.man xliguide.5
-cp mit.cpyrght COPYRIGHT
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -74,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc chkgamma.jpg README* ABOUTGAMMA COPYRIGHT 
+%doc chkgamma.jpg README* ABOUTGAMMA
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/*
 %{_mandir}/*/*
