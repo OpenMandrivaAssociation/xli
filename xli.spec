@@ -14,7 +14,7 @@ Patch1:		xli-1.17.0-mdkpath.patch
 Patch2:		xli-1.17.0-compile-fixes.patch
 License:	MIT
 Group:		Graphics
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:	gccmakedep
 BuildRequires:	imake
 BuildRequires:	libjpeg-devel
