@@ -20,7 +20,6 @@ BuildRequires:	imake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	rman
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	xloadimage
 Obsoletes:	xloadimage
 
