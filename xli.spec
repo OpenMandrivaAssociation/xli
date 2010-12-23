@@ -1,7 +1,7 @@
 %define	name	xli
 %define	version	20061110
 %define fver	2006-11-10
-%define	release	%mkrel 6
+%define	release	%mkrel 7
 %define	url	http://pantransit.reptiles.org/prog/
 
 Summary:	XLI - X11 Image Loading Utility
@@ -14,7 +14,8 @@ Patch1:		xli-1.17.0-mdkpath.patch
 Patch2:		xli-1.17.0-compile-fixes.patch
 License:	MIT
 Group:		Graphics
-BuildRequires:	X11-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libxext-devel
 BuildRequires:	gccmakedep
 BuildRequires:	imake
 BuildRequires:	libjpeg-devel
@@ -42,7 +43,7 @@ MacPaint Image, X Pixmap (.xpm), XBitmap
 
 %build
 xmkmf -a
-%make CFLAGS="%optflags"
+%make CFLAGS="%optflags" EXTRA_LDOPTIONS="%ldflags"
 for i in xli xlito; do cp -f $i.man $i.1; done
 cp -f xliguide.man xliguide.5
 
