@@ -1,7 +1,7 @@
 %define	name	xli
 %define	version	20061110
 %define fver	2006-11-10
-%define	release	%mkrel 7
+%define	release	%mkrel 8
 %define	url	http://pantransit.reptiles.org/prog/
 
 Summary:	XLI - X11 Image Loading Utility
