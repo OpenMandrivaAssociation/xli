@@ -48,23 +48,23 @@ for i in xli xlito; do cp -f $i.man $i.1; done
 cp -f xliguide.man xliguide.5
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/X11/app-defaults/
-make install SYSPATHFILE=$RPM_BUILD_ROOT%{_sysconfdir}/X11/app-defaults/Xli BINDIR=$RPM_BUILD_ROOT%{_bindir}
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/X11/app-defaults/
+make install SYSPATHFILE=%{buildroot}%{_sysconfdir}/X11/app-defaults/Xli BINDIR=%{buildroot}%{_bindir}
 
-for i in *.1;do install -m644 $i -D $RPM_BUILD_ROOT%{_mandir}/man1/$i;done
-install -m644 xliguide.5 -D $RPM_BUILD_ROOT%{_mandir}/man5/xliguide.5
+for i in *.1;do install -m644 $i -D %{buildroot}%{_mandir}/man1/$i;done
+install -m644 xliguide.5 -D %{buildroot}%{_mandir}/man5/xliguide.5
 
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xsetbg
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xview 
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xloadimage
+ln -sf xli %{buildroot}%{_bindir}/xsetbg
+ln -sf xli %{buildroot}%{_bindir}/xview 
+ln -sf xli %{buildroot}%{_bindir}/xloadimage
 
 # quick fix for doc permissions
 chmod 644 README*
  
 %clean  
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
