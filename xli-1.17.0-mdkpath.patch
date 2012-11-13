@@ -1,0 +1,11 @@
+--- xli-1.17.0/Makefile.std.chmou	Wed Feb  9 10:23:32 2000
++++ xli-1.17.0/Makefile.std	Mon Feb  5 20:58:21 2001
+@@ -109,7 +109,7 @@
+ 	@echo "*** it for your site.  See the xli manual page for"
+ 	@echo "*** details on the contents of this file."
+ 	cp /dev/null $(SYSPATHFILE)
+-	echo "path= /usr/local/images" \
++	echo "path=/usr/share/icons /usr/share/pixmaps"	\
+ 		>> $(SYSPATHFILE)
+ 	echo "extension=.gif .jpg .rle .csun .msun .sun .face .xbm .bm" \
+ 		>>$(SYSPATHFILE)
