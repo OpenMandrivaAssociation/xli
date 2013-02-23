@@ -1,7 +1,7 @@
 %define	name	xli
 %define	version	20061110
 %define fver	2006-11-10
-%define	release	%mkrel 9
+%define	release	10
 %define	url	http://pantransit.reptiles.org/prog/
 
 Summary:	XLI - X11 Image Loading Utility
@@ -18,8 +18,8 @@ BuildRequires:	libx11-devel
 BuildRequires:	libxext-devel
 BuildRequires:	gccmakedep
 BuildRequires:	imake
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
+BuildRequires:	jpeg-devel
+BuildRequires:	png-devel
 BuildRequires:	rman
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	xloadimage
