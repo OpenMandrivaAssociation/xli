@@ -14,8 +14,8 @@ Patch1:		xli-1.17.0-mdkpath.patch
 Patch2:		xli-1.17.0-compile-fixes.patch
 License:	MIT
 Group:		Graphics
-BuildRequires:	libx11-devel
-BuildRequires:	libxext-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	gccmakedep
 BuildRequires:	imake
 BuildRequires:	jpeg-devel
