@@ -4,7 +4,7 @@
 %define release 	11
 %define	url	http://pantransit.reptiles.org/prog/
 
-Summary:	XLI - X11 Image Loading Utility
+Summary:	- X11 Image Loading Utility
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
