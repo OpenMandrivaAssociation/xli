@@ -1,13 +1,10 @@
-%define	name	xli
-%define	version	20061110
 %define fver	2006-11-10
-%define release 	11
 %define	url	http://pantransit.reptiles.org/prog/
 
-Summary:	- X11 Image Loading Utility
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Summary:	X11 Image Loading Utility
+Name:		xli
+Version:	20061110
+Release:	12
 URL:		%{url}
 Source0:	%{url}/%{name}/%{name}-%{fver}.tar.gz
 Patch1:		xli-1.17.0-mdkpath.patch
@@ -42,31 +39,28 @@ MacPaint Image, X Pixmap (.xpm), XBitmap
 
 %build
 xmkmf -a
-%make CFLAGS="%optflags" EXTRA_LDOPTIONS="%ldflags"
+%make CFLAGS="%{optflags}" EXTRA_LDOPTIONS="%{ldflags}"
 for i in xli xlito; do cp -f $i.man $i.1; done
 cp -f xliguide.man xliguide.5
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/X11/app-defaults/
-make install SYSPATHFILE=$RPM_BUILD_ROOT%{_sysconfdir}/X11/app-defaults/Xli BINDIR=$RPM_BUILD_ROOT%{_bindir}
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/X11/app-defaults/
+make install SYSPATHFILE=%{buildroot}%{_sysconfdir}/X11/app-defaults/Xli BINDIR=%{buildroot}%{_bindir}
 
-for i in *.1;do install -m644 $i -D $RPM_BUILD_ROOT%{_mandir}/man1/$i;done
-install -m644 xliguide.5 -D $RPM_BUILD_ROOT%{_mandir}/man5/xliguide.5
+for i in *.1;do install -m644 $i -D %{buildroot}%{_mandir}/man1/$i;done
+install -m644 xliguide.5 -D %{buildroot}%{_mandir}/man5/xliguide.5
 
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xsetbg
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xview 
-ln -sf xli $RPM_BUILD_ROOT%{_bindir}/xloadimage
+ln -sf xli %{buildroot}%{_bindir}/xsetbg
+ln -sf xli %{buildroot}%{_bindir}/xview 
+ln -sf xli %{buildroot}%{_bindir}/xloadimage
 
 # quick fix for doc permissions
 chmod 644 README*
  
 %clean  
-rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root)
 %doc chkgamma.jpg README* ABOUTGAMMA
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/*
