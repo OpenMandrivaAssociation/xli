@@ -4,7 +4,7 @@
 Summary:	X11 Image Loading Utility
 Name:		xli
 Version:	20061110
-Release:	12
+Release:	13
 URL:		%{url}
 Source0:	%{url}/%{name}/%{name}-%{fver}.tar.gz
 Patch1:		xli-1.17.0-mdkpath.patch
